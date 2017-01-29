@@ -1,10 +1,23 @@
-myApp.controller('RegistrationCtrl', ['$scope', function($scope) {
+myApp.controller('RegistrationCtrl', ['$scope', '$firebase', '$firebaseAuth', function($scope, $firebase, $firebaseAuth) {
+
+    var ref = firebase.database().ref();
+    var auth = $firebaseAuth();
+
+
+
+
+
     $scope.login = function() {
-        $scope.message = "Welcome " + $scope.user.email; // body...
+        // $scope.message = "Welcome " + $scope.user.email; // body...
+
+        Authentication.login($scope.user);
     };
 
     $scope.register = function() {
-        $scope.message = "Welcome " + $scope.user.firstname;
+
+
+
+        Authentication.register($scope.user);
 
     };
 }]);
