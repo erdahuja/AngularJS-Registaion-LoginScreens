@@ -6,6 +6,21 @@ myApp.controller('appCtrl', ['$scope', function($scope) {
 
 }]);
 
+myApp.run(['$rootScope', '$location', function($rootScope, $location) {
+
+    $rootScope.$on('$routeChangeError', function(event, next, previous, error) {
+
+        if (error == 'AUTH_REQUIRED') {
+            $rootScope.message = 'Sorry, you must login first';
+            $location.path('/login');
+        }
+
+
+    });
+
+
+}]);
+
 myApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/login', {
 

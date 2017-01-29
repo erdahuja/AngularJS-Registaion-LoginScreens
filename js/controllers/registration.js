@@ -12,7 +12,11 @@ myApp.controller('RegistrationCtrl', ['$scope', '$firebase', '$firebaseAuth', fu
 
         Authentication.login($scope.user);
     };
+    $scope.logout = function() {
 
+        Authentication.logout();
+
+    };
     $scope.register = function() {
 
 
